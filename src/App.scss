@@ -1,0 +1,16 @@
+@import '~bootstrap/scss/bootstrap';
+body{
+  background-color: white; 
+  background-size: cover;
+  background-image: none !important
+}
+
+.login-box{
+    max-width: 450px;
+    padding:  25px 25px;
+    margin: 75px auto;
+   background-color: azure;
+}
+.link{
+  text-decoration: none;
+}
