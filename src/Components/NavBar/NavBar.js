@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState } from 'react'
 import './NavBar.css'
-import { Image,Button,Offcanvas } from 'react-bootstrap'
+import { Image,Offcanvas } from 'react-bootstrap'
 import logo from '../../assests/2.png'
 import { Link } from 'react-router-dom'
 

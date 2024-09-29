@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { Button, Col, Container,Row } from 'react-bootstrap'
+import { Button, Col, Container } from 'react-bootstrap'
 import Table  from 'react-bootstrap/Table'
 import { getRequest } from '../../services/ApiServices'
-import axios from 'axios'
 
 
 const Item = () => {
