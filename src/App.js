@@ -4,6 +4,7 @@ import Register from './pages/Register/Register';
 import './App.scss';
 import ProtectedRoutes from './utills/ProtectedRoutes';
 import Item from './pages/Item/Item';
+import Home from './pages/Home/Home';
 function App() {
   return (
     <div className="App">    
@@ -11,6 +12,7 @@ function App() {
       <Routes>
         <Route element={<ProtectedRoutes/>}>
         <Route path='/item' element={<Item/>}/>
+        <Route path='/home' element={<Home/>}/>
         </Route>
         <Route path='/login' element={<Login/>}/>
         <Route path='/register' element={<Register/>}/>
