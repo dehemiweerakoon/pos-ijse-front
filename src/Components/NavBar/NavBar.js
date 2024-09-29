@@ -29,7 +29,7 @@ const NavBar = () => {
           <Link class="nav-link" to={"/item"}>Items</Link>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Link 2</a>
+        <Link class="nav-link" to={"/category"}>Category</Link>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Link 3</a>
@@ -55,7 +55,7 @@ const NavBar = () => {
           <Link class="nav-link" to={"/item"} onClick={handleClose}>Items</Link>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Category</a>
+          <Link class="nav-link" to={"/category"} onClick={handleClose}>Category</Link>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Link 3</a>
