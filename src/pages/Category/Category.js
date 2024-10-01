@@ -3,7 +3,6 @@ import { Container, Table, Col, Button,Form,Modal } from 'react-bootstrap'
 import { getRequest } from '../../services/ApiServices';
 import axios from 'axios';
 import CategoryAdd from '../CategoryAdd/CategoryAdd';
-import { Link } from 'react-router-dom';
 const Category = () => {
 
 

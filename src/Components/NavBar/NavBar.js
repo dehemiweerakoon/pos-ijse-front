@@ -14,30 +14,30 @@ const NavBar = () => {
 
   return (
  <>
-  <nav class="navbar navbar-expand-lg navbar-light bg-primary-subtle rounded">
-  <div class="container-fluid">
+  <nav className="navbar navbar-expand-lg navbar-light bg-primary-subtle rounded">
+  <div className="container-fluid">
     <Image src={logo} thumbnail className='image'/>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" onClick={handleShow} aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" onClick={handleShow} aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span className="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <Link class="nav-link active" aria-current="page" to={"/home"}>Home</Link>
+    <div className="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+        <li className="nav-item">
+          <Link className="nav-link active" aria-current="page" to={"/home"}>Home</Link>
         </li>
-        <li class="nav-item">
-          <Link class="nav-link" to={"/item"}>Items</Link>
+        <li className="nav-item">
+          <Link className="nav-link" to={"/item"}>Items</Link>
         </li>
-        <li class="nav-item">
-        <Link class="nav-link" to={"/category"}>Category</Link>
+        <li className="nav-item">
+        <Link className="nav-link" to={"/category"}>Category</Link>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link 3</a>
+        <li className="nav-item">
+        <Link className="nav-link" to={"/stock"}>Stock</Link>
         </li>
       </ul>
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-        <button class="btn btn-outline-primary" type="submit">Search</button>
+      <form className="d-flex">
+        <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+        <button className="btn btn-outline-primary" type="submit">Search</button>
       </form>
     </div>
   </div>
@@ -47,18 +47,18 @@ const NavBar = () => {
           <Offcanvas.Title>Offcanvas</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <Link class="nav-link active" aria-current="page" to={"/home"} onClick={handleClose}>Home</Link>
+        <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+        <li className="nav-item">
+          <Link className="nav-link active" aria-current="page" to={"/home"} onClick={handleClose}>Home</Link>
         </li>
-        <li class="nav-item">
-          <Link class="nav-link" to={"/item"} onClick={handleClose}>Items</Link>
+        <li className="nav-item">
+          <Link className="nav-link" to={"/item"} onClick={handleClose}>Items</Link>
         </li>
-        <li class="nav-item">
-          <Link class="nav-link" to={"/category"} onClick={handleClose}>Category</Link>
+        <li className="nav-item">
+          <Link className="nav-link" to={"/category"} onClick={handleClose}>Category</Link>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link 3</a>
+        <li className="nav-item">
+        <Link className="nav-link" to={"/stock"} onClick={handleClose}>Stock</Link>
         </li>
       </ul>
         </Offcanvas.Body>
