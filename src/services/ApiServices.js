@@ -15,12 +15,12 @@ export const getRequest = async(path) =>{
     const respnose = await axios.get(base_url+path);
     return respnose;
    }catch(error){
-    // if(error.response.status ===401){
-    //     sessionStorage.removeItem("token")
-    //     sessionStorage.removeItem("username");
-    //     sessionStorage.removeItem("user_id")
-    //     window.location.href = "/login";
-    // }
+    if(error.response.status ===401){
+        sessionStorage.removeItem("token")
+        sessionStorage.removeItem("username");
+        sessionStorage.removeItem("user_id")
+        window.location.href = "/login";
+    }
    }
 }
 export const postRequest = async(path,data) =>{

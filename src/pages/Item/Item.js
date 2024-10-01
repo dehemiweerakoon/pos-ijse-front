@@ -1,11 +1,10 @@
 /* eslint-disable no-restricted-globals */
 import React, { useEffect, useState } from 'react'
-import { Button, Col, Container,Modal,Form,Dropdown } from 'react-bootstrap'
+import { Button, Col, Container,Modal,Form } from 'react-bootstrap'
 import Table  from 'react-bootstrap/Table'
-import { getRequest, postRequest } from '../../services/ApiServices'
-import Category from '../Category/Category'
-import { Link } from 'react-router-dom'
-
+import { getRequest } from '../../services/ApiServices'
+import ItemAdd from '../ItemAdd/ItemAdd'
+import axios from 'axios'
 
 const Item = () => {
 const [items,setItems] = useState([]);
@@ -53,8 +52,10 @@ const handleSubmit =async(event)=>{
     }
   }
   console.log(data);
-  const respnose = await postRequest("/items",data);
+  const respnose = await axios.put(`http://localhost:9000/items/${updateItem.id}`,data);
+  handleClose();
   console.log(respnose);
+  window.location.reload()
  }
 
 useEffect(()=>{
@@ -66,7 +67,7 @@ useEffect(()=>{
    <>
    <Container>
     <Col sm={12}>
-   <Link style={{textDecoration: 'none'}}>  <h2 >Add Items</h2></Link>
+   <a style={{textDecoration: 'none'}} href={"#items"}>  <h2 >Add Items</h2></a>
     <Table striped bordered hover className='mt-3 table-primary' responsive>
       <thead>
         <tr>
@@ -95,6 +96,13 @@ useEffect(()=>{
       </tbody>
     </Table>
     </Col>
+    <Col sm={12} md={6}>
+    <div className="shadow rounded p-4 bg-info mb-5 " id='items'>
+       <h2>Add Items</h2>
+    <ItemAdd data={categories}/>
+    </div>
+   
+    </Col>
    </Container>
 
       <Modal show={show} onHide={handleClose}>
@@ -114,7 +122,7 @@ useEffect(()=>{
       </Form.Group>
 
       <Form.Select aria-label="Default select example" onChange={handleCategory} value={newCategory}>
-      <option>Open this select menu</option>
+      <option>Select the category</option>
       
     {
       categories && categories.map((category,index)=>{
@@ -130,14 +138,6 @@ useEffect(()=>{
     </Form>
 
         </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Save Changes
-          </Button>
-        </Modal.Footer>
       </Modal>
    </>
   )

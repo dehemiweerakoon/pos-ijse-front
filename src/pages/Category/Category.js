@@ -1,16 +1,40 @@
 import React, { useEffect, useState } from 'react'
-import { Container, Table, Col, Button } from 'react-bootstrap'
+import { Container, Table, Col, Button,Form,Modal } from 'react-bootstrap'
 import { getRequest } from '../../services/ApiServices';
+import axios from 'axios';
 const Category = () => {
 
 
   const [categories,setCategories] = useState([]);
+  const [updatecategory,setUpdateCategory] = useState({
+    id:0,
+    name:""
+  });
+  const [name,setName] = useState("");
+  const [show, setShow] = useState(false);
+  const [message,setMessage] = useState("");
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   const getAllCategory = async()=>{
     const respnose = await getRequest("/categories");
-    console.log(respnose.data);
     setCategories(respnose.data);
   }
+ const handleSubmit = async(event)=>{
+    event.preventDefault();
+    const data = {
+      id: updatecategory.id,
+      name: name===""?updatecategory.name:name
+    }
+    const response = await axios.put(`http://localhost:9000/categories/${updatecategory.id}`,data);
+    console.log(response);
+    if(response.data!=null){
+      setMessage("Successfully updated");
+    }
+    handleClose();
+    window.location.reload();
+ }
+
   useEffect(()=>{
     getAllCategory();
   },[])
@@ -35,7 +59,7 @@ const Category = () => {
             <tr>
             <td>{category.id}</td>
             <td>{category.name}</td>
-            <td><Button>Update</Button></td>
+            <td><Button onClick={()=>{handleShow();setUpdateCategory(category)}}>Update</Button></td>
             <td><Button variant="danger">Delete</Button></td>
           </tr>
               )
@@ -47,6 +71,24 @@ const Category = () => {
       </Col>
     </Container>
    
+    <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton >
+          <Modal.Title>Category id :{updatecategory.id}</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+        <Form onSubmit={handleSubmit}>
+      <Form.Group className="mb-3" controlId="name">
+        <Form.Label>Name</Form.Label>
+        <Form.Control type="text" placeholder={updatecategory.name} value={name} onChange={(event)=>{setName(event.target.value)}}/>
+      </Form.Group>
+
+    <Button variant="primary"  className='mt-4'onClick={handleSubmit}>
+           Save Changes
+          </Button>
+    </Form>
+      <p>{message}</p>
+        </Modal.Body>
+      </Modal>
     </>
   )
 }
