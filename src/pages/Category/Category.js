@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { Container, Table, Col, Button,Form,Modal } from 'react-bootstrap'
 import { getRequest } from '../../services/ApiServices';
 import axios from 'axios';
+import CategoryAdd from '../CategoryAdd/CategoryAdd';
+import { Link } from 'react-router-dom';
 const Category = () => {
 
 
@@ -42,6 +44,7 @@ const Category = () => {
     <>
     <Container>
       <Col>   
+      <a style={{textDecoration: 'none'}} href={"#category"}>  <h2 >Add Categories</h2></a>
       <Table responsive="sm" className='mt-5'>
         <thead>
           <tr>
@@ -68,6 +71,12 @@ const Category = () => {
         
         </tbody>
       </Table>
+      </Col>
+      <Col sm={12} md={6}>
+    <div className="shadow rounded p-4 bg-primary-subtle mb-5  " id='category'>
+       <h2>Add category</h2>
+       <CategoryAdd/>
+       </div>
       </Col>
     </Container>
    
