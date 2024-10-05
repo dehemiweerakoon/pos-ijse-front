@@ -7,6 +7,7 @@ import Item from './pages/Item/Item';
 import Home from './pages/Home/Home';
 import Category from './pages/Category/Category';
 import Stock from './pages/Stock/Stock';
+import Pos from './pages/Pos/Pos';
 function App() {
   return (
     <div className="App">    
@@ -17,6 +18,8 @@ function App() {
         <Route path='/home' element={<Home/>}/>
         <Route path='/category' element={<Category/>}/>
         <Route path='/stock' element={<Stock/>}/>
+        <Route path='/' element={<Home/>}/>
+        <Route path='/pos' element={<Pos/>}/>
         </Route>
         <Route path='/login' element={<Login/>}/>
         <Route path='/register' element={<Register/>}/>

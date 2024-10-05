@@ -43,10 +43,13 @@ const Stock = () => {
             name:updateStock.item.itemCategory.name
           }
         },
-        quantity:updateStock.quantity
+        quantity:qty
       }
       const respnose = await axios.put(`http://localhost:9000/stock/${updateStock.id}`,data);
-      console.log(respnose);
+      if(respnose.data!=null){
+        setMessage("Updated Successfully");
+      }
+      window.location.reload();
     }
 
     useEffect(()=>{
@@ -115,7 +118,9 @@ const Stock = () => {
         <Form.Label>name</Form.Label>
         <Form.Control type="text" placeholder="category" value={updateStock.item.itemCategory.name}  disabled/>
       </Form.Group>
-    
+    {
+       <p>{message}</p>
+    }
     <Button variant="primary"  className='mt-4' onClick={handleUpdate}>
            Save Changes
           </Button>
