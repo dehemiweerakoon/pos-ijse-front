@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Button, Col, Container, Table,Modal,Form } from 'react-bootstrap'
 import { getRequest } from '../../services/ApiServices';
 import axios from 'axios';
+import StockAdd from '../StockAdd/StockAdd';
 
 const Stock = () => {
     const [qty ,setQty] = useState(0);
@@ -60,7 +61,8 @@ const Stock = () => {
     <>
     <Container>
      <Col>
-      <Table striped bordered hover className='mt-5'>
+     <a href='#stock' style={{textDecoration: 'none'}} className='mt-2'><h2>Add Stock</h2></a>
+      <Table striped bordered hover className='mt-3'>
       <thead>
         <tr>
           <th>#</th>
@@ -91,6 +93,11 @@ const Stock = () => {
         
       </tbody>
     </Table>
+     </Col>
+     <Col sm={12} md={6}>
+     <div className="shadow rounded p-4 bg-info mb-5 " id='items'>
+      <StockAdd/>
+      </div>
      </Col>
     </Container>
     
