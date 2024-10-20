@@ -6,7 +6,7 @@ const token = sessionStorage.getItem('token');
 if(!token){
     console.error("no token");
 }
-console.log(`Bearer ${token}`)
+//console.log(`Bearer ${token}`)
 axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 
 
