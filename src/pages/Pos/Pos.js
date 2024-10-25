@@ -8,7 +8,7 @@ const Pos = () => {
 
   const [items,setItems]= useState();
   const user_id = sessionStorage.getItem('user_id');
-  const [item_id,setItem_id] = useState(0);
+  const [item_id,setItem_id] = useState(1);
   const [carts,setCarts] = useState({
     id: user_id,
     cartItems:[],
