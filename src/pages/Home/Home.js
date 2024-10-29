@@ -22,7 +22,7 @@ const Home = () => {
         <Card >
             <Card.Img variant="top" src={img2} />
             <Card.Body>
-              <Card.Title>Card Title</Card.Title>
+              <Card.Title>EZPOS</Card.Title>
               <Card.Text>
               Our POS system simplifies sales, inventory management, and customer transactions in one platform. Featuring seamless integration, real-time analytics, and an easy-to-use interface, it's designed to boost efficiency for retail, restaurants, and service businesses. Experience the future of point-of-sale and support your business growth today!
               </Card.Text>

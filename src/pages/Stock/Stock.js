@@ -62,7 +62,7 @@ const Stock = () => {
     <Container>
      <Col>
      <a href='#stock' style={{textDecoration: 'none'}} className='mt-2'><h2>Add Stock</h2></a>
-      <Table striped bordered hover className='mt-3'>
+      <Table striped bordered hover className='mt-3' responsive>
       <thead>
         <tr>
           <th>#</th>

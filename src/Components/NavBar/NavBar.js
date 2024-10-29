@@ -64,7 +64,7 @@ const NavBar = () => {
         <Link className="nav-link" to={"/stock"} onClick={handleClose}>Stock</Link>
         </li>
         <li className="nav-item">
-        <Link className="nav-link" to={"/ps"} onClick={handleClose}>POS</Link>
+        <Link className="nav-link" to={"/pos"} onClick={handleClose}>POS</Link>
         </li>
       </ul>
         </Offcanvas.Body>
