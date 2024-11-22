@@ -5,7 +5,7 @@ import Form from "react-bootstrap/Form";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import Button from "react-bootstrap/Button";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 
 const Login = () => {
@@ -28,6 +28,7 @@ const Login = () => {
         'password':password
     }
     try {
+      // try to add the dependencies the addition of the dependencies as 
         const response = await axios.post("http://localhost:9000/auth/login",data);
         setError("");
         setUsername("");
@@ -82,6 +83,7 @@ const Login = () => {
                   LogIn
                 </Button>
               </div>
+             <Link to="/register"><Button varient="secondary" >Not a user?</Button></Link> 
             </Form>
           </div> 
           </div>

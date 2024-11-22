@@ -8,9 +8,8 @@ const Footer = () => {
         <Card.Body>
           <Card.Title>EZPOS</Card.Title>
           <Card.Text className="d-flex justify-content-center">
-            Molti is a Professionally Designed Multipurpose Child Theme for
-            Divi. And you can use it to create almost any kind of Website with
-            Divi.
+          Shop the best deals at <b> EZPOS! </b>  Quality products, secure payments, and fast 
+          delivery—everything you need, all in one place. Thank you for choosing us!
           </Card.Text>
           <Link
             style={{ textDecoration: "none" }}

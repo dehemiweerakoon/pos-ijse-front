@@ -8,6 +8,7 @@ import Home from './pages/Home/Home';
 import Category from './pages/Category/Category';
 import Stock from './pages/Stock/Stock';
 import Pos from './pages/Pos/Pos';
+import Imagetest from './Components/Image-test/Imagetest';
 function App() {
   return (
     <div className="App">    
@@ -20,6 +21,7 @@ function App() {
         <Route path='/stock' element={<Stock/>}/>
         <Route path='/' element={<Home/>}/>
         <Route path='/pos' element={<Pos/>}/>
+        <Route path='/file' element={<Imagetest/>}/>
         </Route>
         <Route path='/login' element={<Login/>}/>
         <Route path='/register' element={<Register/>}/>

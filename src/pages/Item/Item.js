@@ -9,6 +9,7 @@ import axios from 'axios'
 const Item = () => {
 const [items,setItems] = useState([]);
 const [show, setShow] = useState(false);
+const [image,setImage]= useState([]);
 const [updateItem,setUpdateItem] = useState({
   id: 1,
   name: "Smartphone",
@@ -21,6 +22,13 @@ const [updateItem,setUpdateItem] = useState({
 const [price,setPrice] = useState(0.0);
 const [categories,setCategories] = useState([]);
 const [newCategory,setNewCategory]= useState(0);
+
+const [show2, setShow2] = useState(false);
+
+  const handleClose2 = () => setShow2(false);
+  const handleShow2 = () =>{
+     setShow2(true);
+  } 
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -41,6 +49,7 @@ const getAllItems = async()=>{
   const respnose = await getRequest("/items");
    setItems(respnose.data);
 }
+
 const handleSubmit =async(event)=>{
   event.preventDefault();
   const data ={
@@ -57,11 +66,48 @@ const handleSubmit =async(event)=>{
   console.log(respnose);
   window.location.reload()
  }
+ const getImage =async() =>{
+ console.log("")
+  try {
+    const newImages = [] // Create an array to hold the image URLs
 
+    for (let i = 0; i < items.length; i++) {
+      const item = items[i];
+      const name = `${item.name}.png`;
+      const response = await axios(`http://localhost:9000/file/${name}`, { responseType: 'blob' });
+      newImages.push(URL.createObjectURL(response.data)); // Push the new image URL to the array
+    }
+
+    // After all images are fetched, update the state in one go
+    setImage(newImages);
+  } catch (error) {
+    console.error("Error fetching images:", error);
+  }
+ }
+ useEffect(() => {
+  if (items.length > 0) {
+    getImage(); // Fetch images only after items are updated
+  }
+}, [items]); 
 useEffect(()=>{
   getAllItems();
   getAllCategories();
 },[])
+
+const getItemDeleted = async(id)=>{
+ 
+  try {
+     const respnose = await axios.delete(`http://localhost:9000/items/${id}`);
+    if(respnose){
+      handleShow2();
+      window.location.reload();
+      // the window should load after the data load then we have to wait till the movement // 
+      
+    }
+  } catch (error) {
+    console.error("error deleting the item");
+  }
+}
 
   return (
    <>
@@ -74,6 +120,7 @@ useEffect(()=>{
           <th>Name</th>
           <th>price</th>
           <th>Category</th>
+          <th>image</th>
           <th>Update</th>
           <th>Delete</th>
         </tr>
@@ -86,8 +133,9 @@ useEffect(()=>{
           <td >{item.name}</td>
           <td>${item.price}</td>
           <td>{item.itemCategory.name}</td>
+          <td><img src={image[index]} alt="hw" width="100px"/></td>
           <td><Button onClick={()=>{handleShow(); setUpdateItem(null); setUpdateItem(item)}}>Update</Button></td>
-          <td><Button>Delete</Button></td>
+          <td><Button onClick={()=>{getItemDeleted(item.id)}}>Delete</Button></td>
           </tr>
             )
           })
@@ -136,8 +184,18 @@ useEffect(()=>{
            Save Changes
           </Button>
     </Form>
-
         </Modal.Body>
+      </Modal>
+
+
+      <Modal show={show2} onHide={handleClose2} aria-labelledby="contained-modal-title-vcenter"
+      centered>
+        <Modal.Body>Successfully deleted Item !</Modal.Body>
+        <Modal.Footer>
+          <Button variant="danger" onClick={handleClose2}>
+            Close
+          </Button>
+        </Modal.Footer>
       </Modal>
    </>
   )

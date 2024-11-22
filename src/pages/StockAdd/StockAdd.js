@@ -31,7 +31,7 @@ const StockAdd = () => {
         setMessage("Stock added successfully");
         setTimeout(()=>{setMessage("")},2000);
         window.location.reload();
-        // the set message 
+        // the set message  
       }
     useEffect(()=>{
       getAllItems();
