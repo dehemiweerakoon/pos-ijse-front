@@ -29,7 +29,6 @@ const Stock = () => {
 
     const getAllStock = async()=>{
         const response = await getRequest("/stock");
-        console.log(response.data);
         setStock(response.data);
     }
     const handleUpdate = async()=>{
@@ -61,7 +60,6 @@ const Stock = () => {
     <>
     <Container>
      <Col>
-     <a href="https://drive.google.com/drive-viewer/AKGpihbZlCFYKgxhsfwna2SV7-mLM3TIiRat4yA1_OiQBW-zJ7H1fpDq_kX9_UudWHa9hhtJuJ-hI6TyO3Yq4NYRMQuCriIitZVECg=s1600-rw-v1?source=screenshot.guru"> <img src="https://drive.google.com/drive-viewer/AKGpihbZlCFYKgxhsfwna2SV7-mLM3TIiRat4yA1_OiQBW-zJ7H1fpDq_kX9_UudWHa9hhtJuJ-hI6TyO3Yq4NYRMQuCriIitZVECg=s1600-rw-v1" /> </a>
      <a href='#stock' style={{textDecoration: 'none'}} className='mt-2'><h2>Add Stock</h2></a>
       <Table striped bordered hover className='mt-3' responsive>
       <thead>

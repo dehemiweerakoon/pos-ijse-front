@@ -11,6 +11,13 @@ const NavBar = () => {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+ 
+  const getLogOut=()=>{
+        sessionStorage.removeItem("token")
+        sessionStorage.removeItem("username");
+        sessionStorage.removeItem("user_id")
+        window.location.href = "/login";
+  }
 
   return (
  <>
@@ -39,7 +46,7 @@ const NavBar = () => {
         </li>
       </ul>
       <form className="d-flex">
-        <button className="btn btn-outline-primary" type="submit">LogOut</button>
+        <button className="btn btn-outline-primary" type="submit" onClick={getLogOut}>LogOut</button>
       </form>
     </div>
   </div>
@@ -65,6 +72,11 @@ const NavBar = () => {
         <li className="nav-item">
         <Link className="nav-link" to={"/pos"} onClick={handleClose}>POS</Link>
         </li>
+        <l1>
+        <form className="d-flex">
+        <button className="btn btn-outline-primary" type="submit" onClick={getLogOut}>LogOut</button>
+      </form>
+        </l1>
       </ul>
         </Offcanvas.Body>
       </Offcanvas>

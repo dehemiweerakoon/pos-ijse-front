@@ -88,6 +88,7 @@ const handleSubmit =async(event)=>{
   if (items.length > 0) {
     getImage(); // Fetch images only after items are updated
   }
+// eslint-disable-next-line react-hooks/exhaustive-deps
 }, [items]); 
 useEffect(()=>{
   getAllItems();
@@ -114,7 +115,7 @@ const getItemDeleted = async(id)=>{
    <Container>
     <Col sm={12}>
    <a style={{textDecoration: 'none'}} href={"#items"}>  <h2 >Add Items</h2></a>
-    <Table striped bordered hover className='mt-3 table-primary' responsive>
+    <Table striped bordered hover className='mt-3' responsive>
       <thead>
         <tr>
           <th>Name</th>

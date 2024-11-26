@@ -83,6 +83,8 @@ const Login = () => {
                   LogIn
                 </Button>
               </div>
+              <br/>
+              <br/>
              <Link to="/register"><Button varient="secondary" >Not a user?</Button></Link> 
             </Form>
           </div> 

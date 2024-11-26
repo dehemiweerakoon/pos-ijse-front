@@ -2,6 +2,7 @@
 import React, { useState } from 'react'
 import { Form,Button,Alert } from 'react-bootstrap'
 import { postRequest } from '../../services/ApiServices';
+import axios from 'axios';
 const ItemAdd = (props) => {
 
 const {data} = props;
@@ -9,7 +10,16 @@ const [show1, setShow1] = useState(false);
 const [name,setName] = useState("");
 const [nprice,setnPrice] =useState(0);
 const [categoryid,setCategoryId] = useState(0);
+const [image1, setImage] = useState(null);
+const [preview, setPreview] = useState(null);
 
+const handleImageChange = (e) => {
+  const file = e.target.files[0];
+  if (file) {
+    setImage(file);
+    setPreview(URL.createObjectURL(file));
+  }
+};
 const handleCategory = (event)=>{
    setCategoryId(event.target.value); 
 }
@@ -33,7 +43,21 @@ const handleSubmit = async(event)=>{
     const result = await postRequest("/items",data_submit);
     setShow1(true);
     const timer = setTimeout(() => setShow1(false), 2000);
-    window.location.reload()
+   
+    if(result.status!==500){
+      const formData = new FormData();
+      formData.append("image", image1);  // image1 is the file to be uploaded
+
+      // Axios POST request
+      try {
+        console.log(formData);
+        const response = await axios.post("http://localhost:9000/file", formData);
+        console.log("File saved", response.data);
+      } catch (error) {
+        console.error("Error saving file:", error);
+      }
+    }
+
 }
 
   return (
@@ -60,6 +84,9 @@ const handleSubmit = async(event)=>{
       })
     }
     </Form.Select>
+    <input type="file" accept="image/*" onChange={handleImageChange} />
+        {preview && <img src={preview} alt="Preview" style={{ width: 200, marginTop: 10 }} />}
+    <br/>
       <Button variant="primary" type="submit" className="mt-3">
         Submit 
       </Button>
