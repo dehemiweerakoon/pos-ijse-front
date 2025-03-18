@@ -114,8 +114,8 @@ const getItemDeleted = async(id)=>{
    <>
    <Container>
     <Col sm={12}>
-   <a style={{textDecoration: 'none'}} href={"#items"}>  <h2 >Add Items</h2></a>
-    <Table striped bordered hover className='mt-3' responsive>
+   <h2 className='mt-3'>Item List</h2>
+    <Table striped bordered hover className='mt-3 rounded' responsive >
       <thead>
         <tr>
           <th>Name</th>
@@ -135,8 +135,8 @@ const getItemDeleted = async(id)=>{
           <td>${item.price}</td>
           <td>{item.itemCategory.name}</td>
           <td><img src={image[index]} alt="hw" width="100px"/></td>
-          <td><Button onClick={()=>{handleShow(); setUpdateItem(null); setUpdateItem(item)}}>Update</Button></td>
-          <td><Button onClick={()=>{getItemDeleted(item.id)}}>Delete</Button></td>
+          <td><Button onClick={()=>{handleShow(); setUpdateItem(null); setUpdateItem(item)}} variant='secondary'>Update</Button></td>
+          <td><Button onClick={()=>{getItemDeleted(item.id)}} variant='dark'>Delete</Button></td>
           </tr>
             )
           })

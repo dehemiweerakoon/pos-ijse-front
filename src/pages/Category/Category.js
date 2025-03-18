@@ -43,7 +43,7 @@ const Category = () => {
     <>
     <Container>
       <Col>   
-      <a style={{textDecoration: 'none'}} href={"#category"}>  <h2 >Add Categories</h2></a>
+     <h2 className='mt-5'>Category List</h2>
       <Table responsive="sm" className='mt-5'>
         <thead>
           <tr>
@@ -61,7 +61,7 @@ const Category = () => {
             <tr>
             <td>{category.id}</td>
             <td>{category.name}</td>
-            <td><Button onClick={()=>{handleShow();setUpdateCategory(category)}}>Update</Button></td>
+            <td><Button onClick={()=>{handleShow();setUpdateCategory(category)}} variant='secondary'>Update</Button></td>
             <td><Button variant="danger">Delete</Button></td>
           </tr>
               )
